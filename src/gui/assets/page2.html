@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İkinci Yerel Sayfa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Burası İkinci Sayfa!</h1>
+        <p>Bu sayfayı Python uygulamanızdaki webview aracılığıyla görüntülemektesiniz.</p>
+        <button id="goBackHome">Ana Sayfaya Dön</button>
+    </div>
+    <script>
+        document.getElementById('goBackHome').addEventListener('click', () => {
+            if (typeof pywebview !== 'undefined' && typeof pywebview.api !== 'undefined') {
+                // Python'daki change_page metodunu çağırarak index.html'e dönmesini isteriz.
+                pywebview.api.change_page("index.html").catch(error => {
+                    console.error("Ana sayfaya dönerken hata oluştu:", error);
+                });
+            } else {
+                console.error("Python bağlantısı henüz hazır değil.");
+            }
+        });
+    </script>
+</body>
+</html>

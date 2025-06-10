@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IE WebView Uygulaması</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>IE Tabanlı WebView!</h1>
+        <p>Bu içerik, bir Python uygulaması içindeki Internet Explorer tabanlı webview aracılığıyla görüntüleniyor.</p>
+        <p style="color: red; font-weight: bold;">Uyarı: Bu webview eski bir tarayıcı motoru kullanmaktadır.</p>
+
+        <button id="sendMessageButton">Python'a Mesaj Gönder</button>
+        <p id="messageResponse" class="response-text"></p>
+
+        <button id="requestDataButton">Python'dan Veri İste</button>
+        <p id="dataResponse" class="response-text"></p>
+
+        <hr>
+        <h2>Sayfa Değiştir (MSHTML)</h2>
+        <button id="goToGoogle">Google'a Git</button>
+        <button id="goToSecondPage">İkinci Yerel Sayfa</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
