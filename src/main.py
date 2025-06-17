@@ -1,7 +1,9 @@
 # src/main.py
 
+# to generate Exe file - pyinstaller --onefile --noconsole --hidden-import screeninfo "src\main.py"
 import webview
 import os
+import screeninfo
 
 # threading ve time modülleri bu senaryoda doğrudan kullanılmadığı için kaldırılabilir,
 # ancak hata ayıklama kolaylığı için veya gelecekteki olası kullanımlar için tutulabilir.
@@ -99,6 +101,10 @@ class Api:
         return "Sayfa değiştirme başarısız."
 
 
+monitor = screeninfo.get_monitors()[0] # Genellikle ilk monitör ana ekrandır.
+screen_width = monitor.width
+screen_height = monitor.height
+
 def run_webview_app():
     """
     Pywebview uygulamasını başlatır ve Internet Explorer (MSHTML) motorunu kullanır.
@@ -108,8 +114,8 @@ def run_webview_app():
     window = webview.create_window(
         title="OnePowership Uygulaması",  # Pencere başlığı güncellendi
         url="http://192.168.3.215/parcmenu",  # <--- BURASI DEĞİŞTİ: Direkt Google yüklüyoruz!
-        width=1024,  # Pencere genişliği
-        height=768,  # Pencere yüksekliği
+        width=screen_width,  # Pencere genişliği
+        height=screen_height,  # Pencere yüksekliği
         fullscreen=False,  # Tam ekran olmasın
         resizable=True,  # Yeniden boyutlandırılabilir olsun
         min_size=(600, 400)  # Minimum pencere boyutu
